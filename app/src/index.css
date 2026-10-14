@@ -1,0 +1,92 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-paper: #faf8f4;
+  --color-card: #ffffff;
+  --color-sunk: #f4f1eb;
+  --color-line: #e4e0d8;
+  --color-line2: #d3cec4;
+  --color-ink: #1c1b19;
+  --color-muted: #6b675f;
+  --color-faint: #9a958c;
+
+  --color-teal: #0f5f5a;
+  --color-teal-dark: #0a4642;
+  --color-teal-soft: #e3efed;
+
+  --color-amber: #b7791f;
+  --color-amber-text: #8a5a12;
+  --color-amber-soft: #f6ebd8;
+
+  --color-brick: #a2402c;
+  --color-brick-soft: #f5e2dd;
+
+  --font-serif: 'Source Serif 4', Georgia, serif;
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --radius: 6px;
+  --radius-sm: 4px;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility card {
+  @apply bg-card border border-line rounded;
+}
+
+@utility eyebrow {
+  @apply font-mono text-[11px] leading-[14px] uppercase tracking-[0.06em] text-muted;
+}
+
+@utility num {
+  @apply font-mono tabular-nums;
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-1.5 rounded px-4 py-2 font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+@utility btn-primary {
+  @apply btn bg-teal text-white hover:bg-teal-dark;
+}
+
+@utility btn-quiet {
+  @apply btn border border-line bg-card text-ink hover:bg-sunk;
+}
+
+@utility chip {
+  @apply inline-flex items-center rounded-sm border px-1.5 py-px font-mono text-[11px] leading-[16px];
+}
+
+@utility code-inline {
+  @apply font-mono text-[13px] px-1 py-px rounded-sm bg-sunk border border-line;
+}
+
+@utility input {
+  @apply w-full rounded border border-line2 bg-card px-3 py-2 text-ink placeholder:text-faint focus:border-teal focus:outline-hidden;
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-paper text-ink font-sans antialiased; font-size: 14px; line-height: 20px; }
+  ::selection { background: #CFE3E0; }
+  :focus-visible { outline: 2px solid #0F5F5A; outline-offset: 2px; }
+  button:not(:disabled), [role='button']:not(:disabled), summary, select { cursor: pointer; }
+}

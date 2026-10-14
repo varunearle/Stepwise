@@ -1,0 +1,53 @@
+{
+  "dataset": "ASSISTments 2009-2010 skill builder, train/test split from Piech et al. (2015)",
+  "train": {
+    "students": 3361,
+    "attempts": 407967,
+    "skills": 123
+  },
+  "test": {
+    "students": 856,
+    "attempts": 117566,
+    "correct_rate": 0.688
+  },
+  "bkt": {
+    "auc": 0.741,
+    "rmse": 0.42,
+    "accuracy": 0.745
+  },
+  "baseline": {
+    "auc": 0.617,
+    "rmse": 0.454,
+    "accuracy": 0.694
+  },
+  "baseline_name": "Per-skill average correctness (no tracing)",
+  "median_params": {
+    "prior": 0.66,
+    "learn": 0.09,
+    "guess": 0.14,
+    "slip": 0.2
+  },
+  "param_quartiles": {
+    "prior": [
+      0.41,
+      0.66,
+      0.8
+    ],
+    "learn": [
+      0.03,
+      0.09,
+      0.21
+    ],
+    "guess": [
+      0.05,
+      0.14,
+      0.35
+    ],
+    "slip": [
+      0.11,
+      0.2,
+      0.3
+    ]
+  },
+  "fit": "EM (Baum-Welch), 5 random restarts per skill, seed 42, non-degenerate fits preferred (guess < 0.5, slip < 0.5)"
+}
